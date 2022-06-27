@@ -61,6 +61,13 @@ public class RealEstateRestController {
 		int row = realestateBO.addRealEstateAsField(realtorId,"썅떼빌리버 오피스텔 814호",45,"월세",100000,120 );
 		return "성공"+row;
 	}
+	//http://localhost:8080/lesson03/quiz04/1?id=1
+	@RequestMapping("/lesson03/quiz04/1")
+	public String quiz04_1(
+			@RequestParam("id")int id) {
+		int row =  realestateBO.delrealEstateById(id);
+		return "성공"+row;
+	}
 	
 	
 

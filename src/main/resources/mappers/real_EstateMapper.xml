@@ -113,5 +113,13 @@
  
  
  </insert>
- 
+ <delete id="delrealEstateById" parameterType="int">
+         DELETE 
+            
+          FROM
+                 `real_estate`
+                 
+          WHERE
+                 `id` = #{id}
+ </delete>
  </mapper>

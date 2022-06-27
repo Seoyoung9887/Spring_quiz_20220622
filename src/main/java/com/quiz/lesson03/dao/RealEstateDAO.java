@@ -28,4 +28,5 @@ public interface RealEstateDAO {
 			@Param("price") int price, 
 			@Param("rentPrice") int rentPrice);
 
+	public int delrealEstateById(int id);
 }
