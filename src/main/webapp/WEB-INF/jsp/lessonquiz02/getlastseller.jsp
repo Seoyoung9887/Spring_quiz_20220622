@@ -15,9 +15,9 @@
     <div class="container">
        <h1>${subject}</h1>
        <table>
-          <tr>
-              <th>${result.profileImageUrl }</th>
-          </tr>
+
+          <img src="${result.profileImageUrl }" width="300">
+          
           <tr>
               <th>${result.nickname }</th>
           </tr>        

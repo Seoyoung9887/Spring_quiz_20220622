@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>판매자 추가</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -21,13 +21,13 @@
        </div>
         <div class="form-group">
           <label>프로필 사진 url</label>
-          <input type="text" id="profileImageUrl" name="profileImageUrl" class="form-control col-3" >
+          <input type="text" id="profileImageUrl" name="profileImageUrl" class="form-control col-9" >
        </div>
         <div class="form-group">
           <label>온도</label>
           <input type="text" id="temperature" name="temperature" class="form-control col-3" >
        </div>
-       <input type="submit" class="btn bte-primary" value="추가">
+       <button type="submit" class="btn bte-primary">추가</button>
        </form>
     </div>
 

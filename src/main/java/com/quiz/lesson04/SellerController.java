@@ -1,5 +1,6 @@
 package com.quiz.lesson04;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,17 +13,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.quiz.lesson04.bo.AddSellerBO;
 import com.quiz.lesson04.model.AddSeller;
 
-@RequestMapping("/lesson04")
+@RequestMapping("/lesson04/quiz01")
 @Controller
 public class SellerController {
 	@Autowired
 	private AddSellerBO addsellerBO;
 	//http://localhost:8080/lesson04/quiz01/1
-	@RequestMapping(method = RequestMethod.GET,path ="/quiz01/1")
+	@RequestMapping(method = RequestMethod.GET,path ="/1")
 	public String addsellerview() {
 		return"lessonquiz02/add_seller";
 	}
-	@PostMapping("/quiz01/addseller")
+	@PostMapping("/addseller")
 	public String addseller(
 			@RequestParam("nickname") String nickname, 
 			@RequestParam(value="profileImageUrl",required =false) String profileImageUrl, 
@@ -33,15 +34,28 @@ public class SellerController {
 		
 	}
 	//http://localhost:8080/lesson04/quiz01/seller_info
-	@GetMapping("/quiz01/seller_info")
-	public String getsellerview(Model model) {
-		
-		AddSeller addseller = addsellerBO.getlastseller();
+	@GetMapping("/seller_info")
+	public String getsellerview(
+			@RequestParam(value = "id",required = false) Integer id,
+			Model model) {
+		AddSeller addseller = null;
+		if(id == null) {
+
+			 addseller = addsellerBO.getlastseller();
+			
+		}else {
+			addseller = addsellerBO.getsellerById(id);
+		}
 		model.addAttribute("result", addseller);
 		model.addAttribute("subject", "판매자 정보");
 		
 		return"lessonquiz02/getlastseller";
 		
 	}
+	
+	//http://localhost:8080/lesson04/quiz01/seller_info?id=1
+
+	
+	
 
 }

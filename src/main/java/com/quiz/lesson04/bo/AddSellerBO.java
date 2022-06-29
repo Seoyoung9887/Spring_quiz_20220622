@@ -10,14 +10,19 @@ import com.quiz.lesson04.model.AddSeller;
 public class AddSellerBO {
 	@Autowired
 	private AddSellerDAO addsellerDAO;
-	
-	public void addseller(String nickname, String profileImageUrl, double temperature){
-		addsellerDAO.insertseller(nickname, profileImageUrl, temperature);
+	public void addseller( String nickname, String profileImageUrl, double temperature){
+		addsellerDAO.insertseller( nickname, profileImageUrl, temperature);
 		
 	}
 	public AddSeller getlastseller() {
 		return addsellerDAO.selectlastseller();
 		
 	}
+	public AddSeller getsellerById(int id) {
+		return addsellerDAO.selectsellerById(id);
+		
+	}
+	
+	
 
 }
