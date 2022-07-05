@@ -16,7 +16,7 @@ public class WeatherController {
 	@Autowired
 	private WeatherBO weatherBO;
 
-	//
+	//http://localhost:8080/lesson05/weather
 	@RequestMapping("/lesson05/weather")
 	public String weather(
 			Model model) {
@@ -25,5 +25,10 @@ public class WeatherController {
 		model.addAttribute("NewWeather", arr);
 		return "lessonquiz05/weather";
 	}
+	//http://localhost:8080/lesson05/weather/add
+		@RequestMapping("/lesson05/weather/add")
+		public String addWeather() {
+			return"lessonquiz05/AddWeather";
+		}
 
 }

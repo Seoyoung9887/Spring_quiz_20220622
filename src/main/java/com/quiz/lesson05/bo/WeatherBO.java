@@ -10,7 +10,6 @@ import com.quiz.lesson05.model.NewWeather;
 @Service
 public class WeatherBO {
 	@Autowired
-	
 	private WeatherDAO weatherDAO;  
 	
 	public  List<NewWeather> weatherView() {

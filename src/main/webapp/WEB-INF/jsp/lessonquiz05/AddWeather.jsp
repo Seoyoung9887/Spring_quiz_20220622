@@ -27,74 +27,61 @@
 	crossorigin="anonymous"></script>
 
 
-<link rel="stylesheet" type="text/css" href="/css/lesson05_quiz05.css">
+<link rel="stylesheet" type="text/css" href="/css/lesson05_quiz05">
 </head>
 <body>
 	<div id="wrap" class="">
 		<div class="contents d-flex">
-			<nav class=" bg-primary  ">
+			<nav class=" bg-primary col-2 ">
 			   <%--로고 영역 --%>
 			    <div class="d-flex justify-content-center">
 			      <img class="" src= "https://cdn.imweb.me/thumbnail/20220429/b61a12701a934.png"width="100">
 			    </div>
 			   <%--메뉴 영역 ul(nav),il(nav-item),a(nav-link) --%>
 				<ul class="nav  flex-column ">
-					<li class="nav-item"><a class="nav-link menu-font" href="#">날씨</a></li>
-					<li class="nav-item"><a class="nav-link menu-font" href="#">날시입력</a></li>
-					<li class="nav-item"><a class="nav-link menu-font" href="#">태마날씨</a></li>
-					<li class="nav-item"><a class="nav-link menu-font" href="#">관측기후</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="#">날씨</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="#">날시입력</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="#">태마날씨</a></li>
+					<li class="nav-item"><a class="nav-link text-white" href="#">관측기후</a></li>
 				</ul>
 			</nav>
-			<section class="right ">
+			<section class="right col-10">
 				<strong><h3>과거 날씨</h3></strong>
 				<table class="table text-center ">
-					<thead>
-						<tr>
-							<td>날짜</td>
-							<td>날씨</td>
-							<td>기온</td>
-							<td>강수량</td>
-							<td>미세먼지</td>
-							<td>풍속</td>
-						</tr>
-
-					</thead>
-					<tbody>
-						<c:forEach var="weather" items="${NewWeather}" varStatus="status">
-							<tr>
-								<td><fmt:formatDate value="${weather.date}"
-										pattern="yyyy년M월d일" /></td>
-								<td><c:choose>
-										<c:when test="${weather.weather eq '맑음'}">
-											<img src="/img/sunny.jpg" alt="맑음">
-										</c:when>
-										<c:when test="${weather.weather eq '비'}">
-											<img src="/img/rainy.jpg" alt="비">
-										</c:when>
-										<c:when test="${weather.weather eq '흐림'}">
-											<img src="/img/cloudy.jpg" alt="흐림">
-										</c:when>
-										<c:when test="${weather.weather eq '구름조금'}">
-											<img src="/img/partlyCloudy.jpg" alt="구름조금">
-										</c:when>
-									</c:choose></td>
-								<td>${weather.temperatures}ºC</td>
-								<td>${weather.precipitation}mm</td>
-								<td>${weather.microDust}</td>
-								<td>${weather.windSpeed}km/h</td>
-
-							</tr>
-						</c:forEach>
-					</tbody>
+					<tr>
+		          <td>날짜<input type="text"></td>
+		          <td>날씨
+                     <select>
+                         <option value="">맑음</option>
+                         <option value="">비</option>
+                         <option value="">흐림</option>
+                         <option value="">구름조금</option>
+                     </select>
+		          
+		          </td>
+		          <td>미세먼지
+		           <select>
+                         <option value="">좋음</option>
+                         <option value="">보통</option>
+                         <option value="">나쁨</option>
+                         <option value="">최악</option>
+                     </select>
+		          </td>
+		      </tr>
+		      <tr>
+		          <td>기온<input type="text"></td>
+		          <td>강수량<input type="text"></td>
+		          <td>풍속<input type="text"></td>		      
+		      </tr>
 				</table>
 			</section>
 
 		</div>
 		<footer class="d-flex align-items-center">
-			<div class = "d-flex justify-content-center  m-1">
+			<div class = "d-flex justify-content-center col-2 m-1">
 			   <img class="" src= "https://cdn.imweb.me/thumbnail/20220429/b61a12701a934.png"width="150">
 			</div>
-			<div class = "">
+			<div class = "col-10">
 				<tr>
 					<td>(07062)서울시 동작구 여의대방로16길61</td>
 					<br>
