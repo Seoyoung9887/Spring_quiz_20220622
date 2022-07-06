@@ -40,7 +40,7 @@
 			   <%--메뉴 영역 ul(nav),il(nav-item),a(nav-link) --%>
 				<ul class="nav  flex-column ">
 					<li class="nav-item"><a class="nav-link menu-font" href="#">날씨</a></li>
-					<li class="nav-item"><a class="nav-link menu-font" href="#">날시입력</a></li>
+					<li class="nav-item"><a class="nav-link menu-font" href="/lessonquiz05/AddWeather">날시입력</a></li>
 					<li class="nav-item"><a class="nav-link menu-font" href="#">태마날씨</a></li>
 					<li class="nav-item"><a class="nav-link menu-font" href="#">관측기후</a></li>
 				</ul>

@@ -33,11 +33,13 @@
 	<div id="wrap" class="">
 		<div class="contents d-flex">
 			<nav class=" bg-primary col-2 ">
-			   <%--로고 영역 --%>
-			    <div class="d-flex justify-content-center">
-			      <img class="" src= "https://cdn.imweb.me/thumbnail/20220429/b61a12701a934.png"width="100">
-			    </div>
-			   <%--메뉴 영역 ul(nav),il(nav-item),a(nav-link) --%>
+				<%--로고 영역 --%>
+				<div class="d-flex justify-content-center">
+					<img class=""
+						src="https://cdn.imweb.me/thumbnail/20220429/b61a12701a934.png"
+						width="100">
+				</div>
+				<%--메뉴 영역 ul(nav),il(nav-item),a(nav-link) --%>
 				<ul class="nav  flex-column ">
 					<li class="nav-item"><a class="nav-link text-white" href="#">날씨</a></li>
 					<li class="nav-item"><a class="nav-link text-white" href="#">날시입력</a></li>
@@ -46,42 +48,80 @@
 				</ul>
 			</nav>
 			<section class="right col-10">
-				<strong><h3>과거 날씨</h3></strong>
-				<table class="table text-center ">
-					<tr>
-		          <td>날짜<input type="text"></td>
-		          <td>날씨
-                     <select>
-                         <option value="">맑음</option>
-                         <option value="">비</option>
-                         <option value="">흐림</option>
-                         <option value="">구름조금</option>
-                     </select>
-		          
-		          </td>
-		          <td>미세먼지
-		           <select>
-                         <option value="">좋음</option>
-                         <option value="">보통</option>
-                         <option value="">나쁨</option>
-                         <option value="">최악</option>
-                     </select>
-		          </td>
-		      </tr>
-		      <tr>
-		          <td>기온<input type="text"></td>
-		          <td>강수량<input type="text"></td>
-		          <td>풍속<input type="text"></td>		      
-		      </tr>
-				</table>
+				<strong><h3>날씨 입력</h3></strong>
+				<h3>날씨 입력</h3>
+				<form method="post" action="/lesson05/add_weather">
+					<div class="d-flex justify-content-between mt-5">
+						<div class="d-flex align-items-center">
+							<div class="input-label">날짜</div>
+							<input type="text" class="form-control" id="date" name="date">
+						</div>
+						<div class="d-flex align-items-center">
+							<div class="input-label">날씨</div>
+							<select class="form-control" name="weather">
+								<option>맑음</option>
+								<option>구름조금</option>
+								<option>흐림</option>
+								<option>비</option>
+							</select>
+						</div>
+
+						<div class="d-flex align-items-center">
+							<div class="input-label">미세먼지</div>
+							<select class="form-control" name="microDust">
+								<option>좋음</option>
+								<option>보통</option>
+								<option>나쁨</option>
+								<option>최악</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="d-flex justify-content-between mt-5">
+						<div class="d-flex align-items-center">
+							<div class="input-label">기온</div>
+							<div class="input-group">
+								<input type="text" class="form-control" name="temperatures">
+								<div class="input-group-append">
+									<span class="input-group-text">℃</span>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex align-items-center">
+							<div class="input-label">강수량</div>
+							<div class="input-group">
+								<input type="text" class="form-control" name="precipitation">
+								<div class="input-group-append">
+									<span class="input-group-text">mm</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="d-flex align-items-center">
+							<div class="input-label">풍속</div>
+							<div class="input-group">
+								<input type="text" class="form-control" name="windSpeed">
+								<div class="input-group-append">
+									<span class="input-group-text">km/h</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="text-right mt-4 mb-5">
+						<input type="submit" class="btn btn-success" value="저장">
+					</div>
+				</form>
 			</section>
 
 		</div>
 		<footer class="d-flex align-items-center">
-			<div class = "d-flex justify-content-center col-2 m-1">
-			   <img class="" src= "https://cdn.imweb.me/thumbnail/20220429/b61a12701a934.png"width="150">
+			<div class="d-flex justify-content-center col-2 m-1">
+				<img class=""
+					src="https://cdn.imweb.me/thumbnail/20220429/b61a12701a934.png"
+					width="150">
 			</div>
-			<div class = "col-10">
+			<div class="col-10">
 				<tr>
 					<td>(07062)서울시 동작구 여의대방로16길61</td>
 					<br>
@@ -92,5 +132,17 @@
 
 		</footer>
 	</div>
+<script>
+// ready 함수: DOM tree가 모두 구성된 후 불려지는 함수 
+$(document).ready(function(){
+	//datepicker
+	$("#date").datepicker({
+		dateFormat:"yy-mm-dd"// 표시 포멧
+		,changeYear:true
+		,changeMonth:true
+	});
+});
+
+</script>
 </body>
 </html>

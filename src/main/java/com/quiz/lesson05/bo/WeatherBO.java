@@ -15,5 +15,9 @@ public class WeatherBO {
 	public  List<NewWeather> weatherView() {
 		return weatherDAO.selectweatherView();
 	}
+	
+	public void addWeather(String date,String weather,double temperatures,double precipitation,String microDust,double windSpeed) {
+		weatherDAO.insertWeather(date, weather, temperatures, precipitation, microDust, windSpeed);
+	}
 
 }
