@@ -31,44 +31,49 @@
 		<h1 class="display-4">즐겨 찾기 추가하기</h1>
 
 		<div class="form-group">
-			<label>제목</label> <input type="text" id="name" name="name"
-				class="form-control ">
+			<label for="name">제목</label> 
+			<input type="text" id="name" name="name"class="form-control ">
 		</div>
 		<div class="form-group">
-			<label>주소</label> <input type="text" id="url" name="url"
-				class="form-control ">
+			<label for="url">주소</label>
+			 <input type="text" id="url" name="url"class="form-control ">
 		</div>
 
-		<button type="button" id="addBtn" class="btn btn-success">추가</button>
+		<button type="button" id="addBtn" class="btn btn-success w-100">추가</button>
 
 	</div>
 	<script>
 		$(document).ready(function() {
 
-			$('#addBtn').on('click', function() {
+			$('#addBtn').on('click', function(e) {
 				let name = $('#name').val().trim();
 				if (name == "") {
 					alert("입력해주세요")
 					return;
 				}
 				let url = $('#url').val().trim();
-				if (url == "") {
-					alert("주소를 입력해주세요")
+				if (url.startsWith("http") === false && url.startsWith("https") == false) {
+					alert("주소 형식이 잘못되었습니다")
 					return;
 				}
 				$.ajax({
 					//request
-					type : "post",
-					url : "/lessonquiz06/add_favorite",
+					type : "POST",
+					url : "/lesson06/add_favorite",
 					data : {"name" : name,"url" : url}
 					//response
 					,success : function(data) {
-						location.herf = "/lessonquiz06/FavoriteView"
+						if(date.result == "success"){
+							
+						location.herf = "/lesson06/FvoriteView"
+						}
 					}
-					,complete : function() {
+					,complete : function(data) {
+						alert("성공")
 
 					}
-					,error : function() {
+					,error : function(e) {
+						alert("입력에 실패")
 
 					}
 				});

@@ -1,7 +1,9 @@
 package com.quiz.lesson06;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,24 +23,28 @@ public class lesson06controller {
 	//http://localhost:8080/lesson06/addfavorite
 	@RequestMapping("/addfavorite")
 	public String quiz01() {
-		return"lessonquiz06/add_favorite";
+		return"lesson06/add_favorite";
 	}
-	@ResponseBody
+    @ResponseBody
 	@PostMapping("/add_favorite")
-	public String addfavorite(
+	public Map<String,Object> addfavorite(
 			@RequestParam("name")String name,
 			@RequestParam("url")String url) {
 		favoriteBO.addfavorite(name, url);
-		return"성공";
+		//{"result":"success"}
+		Map<String,Object> result = new HashMap<>();
+		result.put("result","success" );
+		result.put("result_code",1 );
+		return result;
 		
 	}
-	//http://local:8080/lesson06/favoriteview
+	//http://localhost:8080/lesson06/favoriteview
 	@RequestMapping("/favoriteview")
 	public String favoriteview(Model model) {
 		List<AddFavorite> favorite = new ArrayList<>();
 		favorite = favoriteBO.getfavorite();
 		model.addAttribute("AddFavorite", favorite);
-		return"lessonquiz06/FavoriteView";
+		return"lesson06/FavoriteView";
 	}
 
 }

@@ -32,6 +32,11 @@
          <c:forEach  var="favorite" items="${AddFavorite}" varStatus="status">
          <table class="table">
                <tr>
+                  <td>no.</td>
+                  <td>이름</td>
+                  <td>주소</td>
+               </tr>
+               <tr>
                   <td>#{status.count}</td>
                   <td>#{favorite.name}</td>
                   <td>#{favorite.url}</td>
