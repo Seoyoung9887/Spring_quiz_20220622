@@ -6,19 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.quiz.lesson06.dao.FavoriteDAO;
-import com.quiz.lesson06.model.AddFavorite;
+import com.quiz.lesson06.model.Favorite;
 
 @Service
 public class FavoriteBO {
 	@Autowired
 	private FavoriteDAO favoriteDAO;
-	public void addfavorite(String name, String url) {
-		favoriteDAO.insertfavorite(name, url);
-	}
-	
-	public List<AddFavorite> getfavorite(){
-		return favoriteDAO.selectfavorite();
-		
+
+	public void addFavorite(String name, String url) {
+		favoriteDAO.insertFavorite(name, url);
 	}
 
+	public List<Favorite> getFavoriteList() {
+		return favoriteDAO.selectFavoriteList();
+	}
+	
+	public Favorite getFavoriteByUrl(String url) {
+		return favoriteDAO.selectFavoriteByUrl(url);
+	}
+	
+	public int deleteFavoriteById(int id) {
+		return favoriteDAO.deleteFavoriteById(id);
+	}
+	
 }
+
