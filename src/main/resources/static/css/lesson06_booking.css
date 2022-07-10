@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.menu-font:hover {
+    color:white;
+    border: 2px solid white;
+} 
+.menu-font {
+    color:white;
+    font-size:17px;
+    font-weight: bold;
+}
+.text{
+	color:gray;
+}
+.label{
+	font-weight:bold;
+	
+}
+.a{
+	width:100px;
+}

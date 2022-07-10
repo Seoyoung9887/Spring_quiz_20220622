@@ -43,46 +43,43 @@
 		</table>
 	</div>
 <script>
-$(document).ready(function(){
-	//(1) name 속성과 value 속성을 이용해서 동적으로 삭제 감지 (권장안함)
-		//$('button[name=delBtn]').on(click,function(e){
-			//let id = $(this).attr('value')
-			//let id = e.target.value;
-	//});
-	//(2)data를 이용해서 태그에 data를 임시 저장해놓기	
-	//태그: data-favorite-id    data- 그 뒤로부터는 우리가 이름을 정한다(카멜 절대안됌)
-	// 스크립트: $(this).data('favorite-id'); =>태그에 심은 값을 꺼냄
-	    $('.del_btn').on('click',function(e){
-	      let favoriteid = $(this).data('favorite-id');	
-	      
-	      $.ajax({
-				//request
-				type:"POST"
-				,url:"/lesson06/delete_favorite"
-				,data:{"id":favoriteid}
-			    //respone
-			    ,success:function(data){
-			    	if (data.result == "success") {
-						   alert("삭제 하셨습니다.");
-							location.reload(true);//새로고침
-			            }else{
-			            	alert("삭제 실패, 관리자에게 문의해주세요")
-			            }
-			    }
-			    ,error:function(e){
-			    	alert("통신에 실패");
-			    }
-			    	
-			    
-			});
-	    	
+$(document).ready(function() {
+	// (1) name 속성과 value 속성을 이용해서 동적으로 삭제 감지 (권장 안함)
+	/* $('button[name=delBtn]').on('click', function(e) {
+		//let id = $(this).attr('value');
+		
+		let id = e.target.value;
+		alert(id);
+	}); */
+	
+	// (2) data를 이용해서 태그에 data를 임시 저장해놓기
+	// 태그: data-favorite-id    data-   그 뒤부터는 우리가 이름을 정한다.(카멜 절대 안됨)
+	// 스크립트: $(this).data('favorite-id'); => 태그에 심은 값을 꺼냄
+	$('.del-btn').on('click', function() {
+		let favoriteId = $(this).data('favorite-id');
+		//alert(favoriteId);
+		
+		$.ajax({
+			// request
+			type:"post"
+			, url:"/lesson06/delete_favorite"
+			, data: {"id" : favoriteId}
+			
+			// response
+			, success: function(data) {
+				// {"result":"success"}
+				if (data.result == "success") {
+					location.reload(true); // 새로고침
+				} else {
+					alert("삭제하는데 실패했습니다. 관리자에게 문의해주세요.");
+				}
+			}
+			, error: function(e) {
+				alert("통신에 실패했습니다.");
+			}
 		});
-		
-		
-		
+	});
 });
-	
-	
 	</script>
 </body>
 </html> 

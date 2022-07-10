@@ -85,7 +85,7 @@ public class FavoriteController {
 	// 삭제
 	//ajax로 요청 - ResponsrBody  return Map
 		@ResponseBody
-		@PostMapping("delete_favorite")
+		@PostMapping("/delete_favorite")
 		public Map<String, Object> deletelist(
 				@RequestParam("id")int id){
 			
