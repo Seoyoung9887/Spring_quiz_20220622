@@ -16,7 +16,7 @@
 		FROM
 		    `booking`
 		</select>    
-		<delete id="delBookingList" parameterType="int">
+		<delete id="delBookingListById" parameterType="int">
 		    DELETE
 		    FROM      
 		          `booking`

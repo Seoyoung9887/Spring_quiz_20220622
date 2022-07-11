@@ -30,10 +30,10 @@
 <link rel="stylesheet" type="text/css" href="/css/lesson06_booking.css">
 </head>
 <body>
-     <div class="container">
+     <div id="wrap" class="container">
         <span class="text-center"><h1>통나무 팬션</h1></span>
         <nav class="bg-warning">
-				<ul class="nav d-flex justify-content-between ">
+				<ul class="nav nav-fill ">
 					<li class="nav-item"><a class="nav-link menu-font" href="#">팬션소개</a></li>
 					<li class="nav-item"><a class="nav-link menu-font" href="/lessonquiz05/AddWeather">객실보기</a></li>
 					<li class="nav-item"><a class="nav-link menu-font" href="#">예약하기</a></li>
@@ -68,11 +68,14 @@
 			          <span class="text-success">${booking.state}</span>
 			          </c:when>
 			          <c:when test="${booking.state eq '대기중'}">
-			          <span class="text-primary">${booking.state}</span>
+			          <span class="text-info">${booking.state}</span>
+			          </c:when>
+			          <c:when test="${booking.state eq '취소'}">
+			          <span class="text-danger">${booking.state}</span>
 			          </c:when>
 			        </c:choose>
 			        </td>
-			        <td><button type="button" class="del-Btn btn-danger" data-booking-id="${booking.id}">삭제</button></td>
+			        <td><button type="button" class="del-Btn btn btn-danger" data-booking-id="${booking.id}">삭제</button></td>
 			         
 			     </tr>
 			    </c:forEach>
@@ -82,21 +85,21 @@
 			</table>
 			
 			 <footer>	 
-			   <span class="text">제주특별자치도 제주시 애월읍<br>
+			   <small class="text">제주특별자치도 제주시 애월읍<br>
 			   사업자등록번호:111-22-233222/농어촌민박사업자지정/대표:김통목<br>
-			   Copyright 2025 tongnamu.All right reserved</span>
+			   Copyright 2025 tongnamu.All right reserved</small>
 			 </footer>
 			
 		
      </div>
 <script>
-$(doucment).ready(function(){
+$(document).ready(function(){
 	$('.del-Btn').on('click',function(){
 		let bookingid = $(this).data('booking-id');
 		
-		$ajax({
-			type:"POST"
-			,url:"/lesson06/delete_booking"
+		$.ajax({
+			type:"DELETE"
+			,url:"/lesson06/quiz/delete_booking"
 			,data:{"id":bookingid}
 		
 		    ,success:function(data){
@@ -104,14 +107,15 @@ $(doucment).ready(function(){
 		    		
 		    		location.reload(true);
 		    	}else{
-		    		alert("실패하셨습니다")
+		    		alert("실패하셨습니다");
 		    	}
 		    }
 		    ,error:function(e){
-		    	alert("통신에 실패")
+		    	alert("통신에 실패");
 		    }
 		});
 	});
+	
 	
 });
 </script>

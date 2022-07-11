@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,8 +35,10 @@ public class BookingController {
      public String addBookingView() {
     	 return"lesson06/addBookingView";
      }
+     
+     //POST: 회원가입 처음 인설트 할때 /GET id로 조회할때 WHERE절에 값이 들어갈떄       PUT: 수정할때  DELETE: 삭제할때   RESTFUL API 
      @ResponseBody
-     @PostMapping("/delete_booking")
+     @DeleteMapping("/delete_booking")
      public Map<String, Object> deletelist(
 				@RequestParam("id")int id){
 			
