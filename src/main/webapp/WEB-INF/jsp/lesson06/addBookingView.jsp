@@ -82,10 +82,65 @@
 	</div>
 <script>
 $(document).ready(function(){
-	$("#date").datepicker({
- 	     dateFormat:'yy-mm-dd'
-		,changeYear:true
-		,changeMonth:true 
+	$('#reservationBtn').on('click', function(){
+		let name = $('input[name=name]').val().trim();
+		let date = $('input[name=date]').val().trim();
+		let day = $('input[name=day]').val().trim();
+		let headcount = $('input[name=headcount]').val().trim();
+		let phoneNumber = $('input[name=phoneNumber]').val().trim();
+		
+		if(name.lenght < 1){
+			alert("이름을 입력하세요");
+			return;
+		}
+		if(date == ""){
+			alert("날짜를 선택해주세요");
+			return;
+		}
+		if(day == ""){
+			alert("숙박일을 입력하세요");
+			return;
+		}
+		if(isNaN(day)){
+			alert("숫자만 가능합니다");
+			return;
+		}
+		if(headcount == ""){
+			alert("숙박인원을 입력하세요");
+			return;
+		}
+		if(isNaN(headcount)){
+			alert("숫자만 가능합니다");
+			return;
+		}
+		if(phoneNumber == ""){
+			alert("전화번호를 입력하세요");
+			return;
+		}
+		
+		$.ajax({
+			type:"POST"
+			,url:"/lesson06/quiz/add_booking"
+			,data:{"name":name,"date":date,"day":day,"headcount":headcount,"phoneNumber":phoneNumber}
+		    ,success:function(data){
+		    	if(data.result == "success"){
+		    		alert("예약되었습니다.")
+		    		loction.href = "/lesson06/quiz/1";
+		    	}else{
+		    		alert("실패하셨습니다");
+		    	}
+		    }
+		    ,error:function(e){
+		    	alert("통신오류");
+		    }
+		})
+		
+	});
+	
+	$("input[name=date]").datepicker({
+		minDate:0
+ 	     ,dateFormat:'yy-mm-dd'
+		
 	});
 	
 });

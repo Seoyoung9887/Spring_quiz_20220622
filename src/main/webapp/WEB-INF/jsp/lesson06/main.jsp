@@ -1,22 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<title>통나무 팬션</title>
+<!-- jquery : bootstrap, datepicker -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+
+<!-- bootstrap -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.js"
-	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-	crossorigin="anonymous"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -26,61 +24,136 @@
 	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 	crossorigin="anonymous"></script>
 
+<!-- datepicker -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<link rel="stylesheet" type="text/css" href="/css/lesson06_booking.css">
+<!-- stylesheet -->
+<link rel="stylesheet" type="text/css"
+	href="/css/lesson06_booking.css">
 </head>
+
 <body>
-     <div class="container">
-        <span class="text-center"><h1>통나무 팬션</h1></span>
-        <nav class="bg-warning">
-				<ul class="nav d-flex justify-content-between ">
-					<li class="nav-item"><a class="nav-link menu-font" href="#">팬션소개</a></li>
-					<li class="nav-item"><a class="nav-link menu-font" href="/lessonquiz05/AddWeather">객실보기</a></li>
-					<li class="nav-item"><a class="nav-link menu-font" href="#">예약하기</a></li>
-					<li class="nav-item"><a class="nav-link menu-font" href="#">예약목록</a></li>
-				</ul>
-			</nav>
-			<div>
-			 <img alt="1번" src="/img/test06_banner1.jpg">
-			</div>
-			<div class="d-flex">
-			    <div class="col-4">
-			       <h1>실시간 예약하기</h1>
-			    </div>		
-			    <div class="col-4">
-			         <h3>예약확인</h3>
-			         <div>
-			         <label for="name">이름:</label>
-			         <input type="text" id="name" >
-			         </div>
-			          <div>
-			         <label for="phoneNumber">전화번호:</label>
-			         <input type="text" id="phoneNumber" >
-			         </div>
-			         <button>조회하기</button>
-			    </div>		
-			    <div class="col-4">
-			        <tr>
-			           <td>예약문의</td>
-			           <td>010-0000-1111</td>
-			        </tr>
-			    </div>		
-			
-			</div>
-			
-			
-			 <footer>	 
-			   <span class="text">제주특별자치도 제주시 애월읍<br>
-			   사업자등록번호:111-22-233222/농어촌민박사업자지정/대표:김통목<br>
-			   Copyright 2025 tongnamu.All right reserved</span>
-			 </footer>
-			
-		
-     </div>
-     <script>
-     $(document).ready(function(){
-    	 
-     });
-     </script>
+	<div id="wrap" class="container">
+		<header class="d-flex justify-content-center align-items-center">
+			<div class="display-4">통나무 팬션</div>
+		</header>
+		<nav>
+			<ul class="nav nav-fill">
+				<li class="nav-item"><a href="#"
+					class="nav-link text-white font-weight-bold">팬션소개</a></li>
+				<li class="nav-item"><a href="#"
+					class="nav-link text-white font-weight-bold">객실보기</a></li>
+				<li class="nav-item"><a href="/lesson06/quiz03/2"
+					class="nav-link text-white font-weight-bold">예약하기</a></li>
+				<li class="nav-item"><a href="/lesson06/quiz03/1"
+					class="nav-link text-white font-weight-bold">예약목록</a></li>
+			</ul>
+		</nav>
+		<section class="banner">
+			<img id="bannerImage"
+				src="http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner1.jpg"
+				alt="banner" width="1110px" height="500px">
+		</section>
+		<section class="reserve bg-primary d-flex">
+			<section
+				class="real-time-reserved col-4 d-flex justify-content-center align-items-center">
+				<div class="display-4 text-white">
+					실시간<br>예약하기
+				</div>
+			</section>
+			<section class="confirm col-4">
+				<div class="m-3">
+					<span class="reserve-confirm mr-3">예약 확인</span>
+				</div>
+
+				<!-- 예약 확인 -->
+				<div id="memberInputBox" class="m-2">
+					<div class="d-flex justify-content-end mr-3">
+						<span class="text-white">이름:</span> <input type="text" id="name"
+							class="form-control input-form">
+					</div>
+					<div class="d-flex mt-2 justify-content-end mr-3">
+						<span class="text-white">전화번호:</span> <input type="text"
+							id="phoneNumber" class="form-control input-form">
+					</div>
+
+					<!-- 버튼 -->
+					<div class="text-right mt-3 mr-3">
+						<button type="button" class="btn btn-success submit-btn">조회
+							하기</button>
+					</div>
+				</div>
+
+			</section>
+			<section
+				class="inquiry col-4 d-flex justify-content-center align-items-center">
+				<div class="text-white">
+					<h4 class="font-weight-bold">예약문의:</h4>
+					<h1>
+						010-<br>0000-1111
+					</h1>
+				</div>
+			</section>
+		</section>
+
+		<footer>
+			<small class="text-secondary"> 제주특별자치도 제주시 애월읍<br>
+				사업자등록번호: 111-22-255222 / 농어촌민박사업자지정 / 대표:김통목<br> Copyright 2025
+				tongnamu. All right reserved.
+			</small>
+		</footer>
+	</div>
+	
+<script>
+$(document).ready(function() {
+	// banner
+	let bannerList = ["/img/test06_banner1.jpg", "/img/test06_banner2.jpg", "/img/test06_banner3.jpg", "/img/test06_banner4.jpg"];
+    let currentImageIndex = 0;
+    setInterval(function() {
+        $("#bannerImage").attr("src", bannerList[currentImageIndex]);
+        currentImageIndex++;
+        if(currentImageIndex == bannerList.length) {
+            currentImageIndex = 0;
+        }
+    }, 3000); 
+    
+    $('.submit-btn').on('click',function(){
+    	let name = $('#name').val().trim();
+    	let phoneNumber = $('#phoneNumber').val().trim();
+    	
+    	if(name == ""){
+    		alert("이름을 입력해주세요");
+    	}
+    	if(phoneNumber == ""){
+    		alert("전화번호를 입력해주세요");
+    	}
+    	if(phoneNumber.startsWith("010") == false){
+    		alert("010 으로 시작하셔야합니다")
+    	}
+    	
+    	$.ajax({
+    		type:"POST"
+    		,url:"/lesson06/quiz/get_booking"
+    		,data:{"name":name,"phoneNumber":phoneNumber }
+    	    ,success:function(data){
+    	    		alert("이름 : "+data.booking.name 
+    	    			     + "\n날짜 : "+data.booking.date.substring(0,10)
+    	    			     + "\n일수 : "+data.booking.day
+    	    			     + "\n인원 : "+data.booking.headcount
+    	    			     + "\n상태 : "+data.booking.state
+    	    			)
+    	    	
+    	    }
+    	    ,error:function(e){
+    	    	alert("통신에 실패하셨습니다")
+    	    }
+    	});
+    });
+    
+});
+</script>
+
 </body>
 </html>
